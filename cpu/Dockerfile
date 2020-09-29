@@ -76,11 +76,11 @@ RUN cd ~/tmp/ \
 
 # Install OpenCV for C and C++
 RUN cd ~/tmp/ \
-    && wget -O opencv-3.4.zip \
-    https://codeload.github.com/opencv/opencv/zip/3.4 \
+    && wget -O opencv-3.4.11.zip \
+    https://codeload.github.com/opencv/opencv/zip/3.4.11 \
     && ls \
-    && unzip opencv-3.4.zip \
-    && cd opencv-3.4 \
+    && unzip opencv-3.4.11.zip \
+    && cd opencv-3.4.11 \
     && mkdir -p build \
     && cd build \
     && cmake .. \
@@ -94,89 +94,6 @@ RUN cd ~/tmp/ \
     -DWITH_OPENCL=OFF \
     -DWITH_OPENCLAMDBLAS=OFF \
     -DWITH_OPENCLAMDFFT=OFF \
-    && make -j$MAKE_THREADS \
-    && make install \
-    && ldconfig \
-    && rm -rf ~/tmp/*
-
-# Install protobuf
-RUN cd ~/tmp/ \
-    && wget -O protobuf-3.5.1.1.zip \
-    https://codeload.github.com/protocolbuffers/protobuf/zip/3.5.1.1 \
-    && ls \
-    && unzip protobuf-3.5.1.1.zip \
-    && cd protobuf-3.5.1.1 \
-    && ./autogen.sh \
-    && ./configure \
-    && make -j$MAKE_THREADS \
-    && make install \
-    && ldconfig \
-    && rm -rf ~/tmp/*
-
-# Install gtest
-RUN cd ~/tmp/ \
-    && wget -O googletest-release-1.8.0.zip \
-    https://codeload.github.com/google/googletest/zip/release-1.8.0 \
-    && ls \
-    && unzip googletest-release-1.8.0.zip \
-    && cd googletest-release-1.8.0 \
-    && mkdir -p build \
-    && cd build \
-    && cmake .. \
-    -G"Unix Makefiles" \
-    -DCMAKE_BUILD_TYPE=release \
-    -DCMAKE_INSTALL_PREFIX=/usr/local/ \
-    -DBUILD_SHARED_LIBS=true \
-    -DBUILD_STATIC_LIBS=true \
-    && make -j$MAKE_THREADS \
-    && make install \
-    && ldconfig \
-    && rm -rf ~/tmp/*
-
-# Install gflags
-RUN cd ~/tmp/ \
-    && wget -O gflags-2.2.2.zip \
-    https://codeload.github.com/gflags/gflags/zip/v2.2.2 \
-    && ls \
-    && unzip gflags-2.2.2.zip \
-    && cd gflags-2.2.2 \
-    && mkdir -p build \
-    && cd build \
-    && cmake .. \
-    -DCMAKE_BUILD_TYPE=release \
-    -DCMAKE_INSTALL_PREFIX=/usr/local/ \
-    -DBUILD_SHARED_LIBS=true \
-    -DBUILD_STATIC_LIBS=true \
-    && make -j$MAKE_THREADS \
-    && make install \
-    && ldconfig \
-    && rm -rf ~/tmp/*
-
-# Install eigen
-RUN cd ~/tmp/ \
-    && wget -O eigen-eigen-b3f3d4950030.tar.bz2 \
-    https://bitbucket.org/eigen/eigen/get/3.3.5.tar.bz2 \
-    && ls \
-    && tar -xvf eigen-eigen-b3f3d4950030.tar.bz2 \
-    && cd eigen-eigen-b3f3d4950030 \
-    && mkdir -p build \
-    && cd build \
-    && cmake .. \
-    -DCMAKE_BUILD_TYPE=release \
-    -DCMAKE_INSTALL_PREFIX=/usr/local/ \
-    && make -j$MAKE_THREADS \
-    && make install \
-    && ldconfig \
-    && rm -rf ~/tmp/*
-
-# Install glog
-RUN cd ~/tmp/ \
-    && wget -O glog-0.3.4.zip \
-    https://codeload.github.com/google/glog/zip/v0.3.4 \
-    && ls \
-    && unzip glog-0.3.4.zip \
-    && cd glog-0.3.4 \
-    && ./configure \
     && make -j$MAKE_THREADS \
     && make install \
     && ldconfig \
