@@ -1,4 +1,6 @@
 # Install GStreamer
+
+```
 sudo apt-get install \
     libgstreamer1.0-0 \
     gstreamer1.0-plugins-base \
@@ -14,3 +16,4 @@ sudo apt-get install \
     gstreamer1.0-gtk3 \
     gstreamer1.0-qt5 \
     gstreamer1.0-pulseaudio
+```
