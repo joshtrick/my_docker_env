@@ -1,4 +1,6 @@
-# Install GStreamer
+# Dependencies Installation
+
+## Install GStreamer
 
 ```
 sudo apt-get install \
@@ -16,4 +18,18 @@ sudo apt-get install \
     gstreamer1.0-gtk3 \
     gstreamer1.0-qt5 \
     gstreamer1.0-pulseaudio
+```
+
+# Docker Helper
+
+## Enable Display
+
+On host machine type:
+```
+xhost +
+```
+
+In docker run, add:
+```
+-v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY
 ```
